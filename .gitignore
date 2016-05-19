@@ -1,0 +1,22 @@
+# Ignore everything
+Library/*
+/*
+/*/
+
+# Inverse ignore some stuff
+!/Assets/
+!/ProjectSettings/
+!.gitignore
+
+# OS Stuff
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+$RECYCLE.BIN/
+Desktop.ini
+ProjectSettings/ProjectVersion.txt
+ProjectSettings/ProjectSettings.asset
+ProjectSettings/ProjectVersion.txt
