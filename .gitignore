@@ -1,5 +1,5 @@
 # Ignore everything
-Library/*
+/Library/*
 /*
 /*/
 
@@ -20,3 +20,5 @@ Desktop.ini
 ProjectSettings/ProjectVersion.txt
 ProjectSettings/ProjectSettings.asset
 ProjectSettings/ProjectVersion.txt
+/Library/metadata
+/Library
