@@ -6,33 +6,26 @@ public class SnakeHead : MonoBehaviour {
     //height and width of head and body textures
     public int segmentSize;
 
-    //pixels / sec
-    public float headSpeed = 30;
+    //offset in px between segments
+    public int segmentOffset = 1;
 
-    public Vector2 currentDirection;
+    //pixels / sec
+    public float speed = 30;
+
+    public FixedCircularQueue<Vector3> segmentPositions = new FixedCircularQueue<Vector3>(0);
 
     public Vector2 lastPlayerDirectionInput;
 
-    public SnakeBody firstBodySegment;
-
     public uint bodySegmentsToSpawn;
     public GameObject bodySegmentPrefab;
-
-    //position of the head the last time that movement started
-    private Vector3 lastStartPos;
-    private float lastStartTime;
 
     private Rigidbody2D body2d;
 
     private List<SnakeBody> bodySegments = new List<SnakeBody>();
 
 	void Awake () {
-        lastPlayerDirectionInput = Vector2.up;
-
         body2d = GetComponent<Rigidbody2D>();
 
-        currentDirection = lastPlayerDirectionInput;
-        body2d.velocity = currentDirection * headSpeed;
     }
 
     void Start()
@@ -43,7 +36,7 @@ public class SnakeHead : MonoBehaviour {
         }
     }
 
-    void Update ()
+    void FixedUpdate ()
     {
 	    if(Input.GetKeyDown(KeyCode.UpArrow))
         {
@@ -62,26 +55,9 @@ public class SnakeHead : MonoBehaviour {
             lastPlayerDirectionInput = Vector2.right;
         }
 
-        //check if the current movement has finished
-        //we only move in one dimension at a time, so this should be OK
-        if(lastPlayerDirectionInput != currentDirection)
-        {
-            //the current movement is done
+        body2d.velocity = lastPlayerDirectionInput * speed;
 
-            Vector2 distanceTraveled = transform.position - lastStartPos;
-
-            MovementStep completedStep = new MovementStep(PolarVec2.FromCartesian(distanceTraveled).normalized, headSpeed, Time.time - lastStartTime);
-            if (firstBodySegment != null)
-            {
-                firstBodySegment.QueueStep(completedStep);
-            }
-
-            currentDirection = lastPlayerDirectionInput;
-            body2d.velocity = currentDirection * headSpeed;
-            lastStartPos = transform.position;
-            lastStartTime = Time.time;
-        }
-
+        segmentPositions.Enqueue(transform.position);
     }
 
     void SpawnBodySegment()
@@ -89,24 +65,31 @@ public class SnakeHead : MonoBehaviour {
         GameObject newSegment = GameObject.Instantiate(bodySegmentPrefab);
         SnakeBody newSegmentScript = newSegment.GetComponent<SnakeBody>();
 
+        // the 30 comes from FixedUpdate being called 30 times per second
+        uint distanceFromPrevSegment /* in updates */ = (uint)Mathf.RoundToInt((segmentSize + segmentOffset) * 30f / speed);
+
+
+        newSegmentScript.indexInQueue = (uint)(((int)segmentPositions.maxSize) - 1 + distanceFromPrevSegment);
+        newSegmentScript.head = this;
+
+        segmentPositions.Resize(segmentPositions.maxSize + distanceFromPrevSegment);
+
         Vector3 lastSegmentPosition;
 
         if(bodySegments.Count < 1) //first segment
         {
             lastSegmentPosition = transform.position;
 
-            firstBodySegment = newSegmentScript;
         }
         else
         {
+            
             SnakeBody oldLastSegment = bodySegments[bodySegments.Count - 1];
 
             lastSegmentPosition = oldLastSegment.transform.position;
-
-            oldLastSegment.nextPart = newSegmentScript;
         }
 
-        newSegment.transform.position = lastSegmentPosition + (lastSegmentPosition - lastStartPos).normalized * segmentSize;
+        newSegment.transform.position = lastSegmentPosition;
 
         bodySegments.Add(newSegmentScript); 
     }
