@@ -12,7 +12,7 @@ GameObject:
   - 61: {fileID: 6155298}
   m_Layer: 0
   m_Name: Walls_1
-  m_TagString: Untagged
+  m_TagString: KillsPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
