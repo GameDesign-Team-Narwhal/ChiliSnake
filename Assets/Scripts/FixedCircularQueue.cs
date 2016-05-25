@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-//circular queue with a fixed size which supports random access
+//circular queue with a fixed size
 //supports random access
 //the first element enqueued has index zero, and enqueueing another element will increment existing elements' indexes by 1
 //Enqueue()ing more than size elements will overwrite the highest-index element
@@ -113,7 +113,7 @@ public class FixedCircularQueue<T>
         T[] newBackingArray = new T[newSize];
 
         //we'll use apparant indexes for this, it's too hard to use real indexes
-        for(uint index = 0; index < _size; ++index)
+        for(uint index = 0; index < Math.Min(_size, newSize); ++index)
         {
             newBackingArray[index] = this[index];
         }
@@ -121,11 +121,8 @@ public class FixedCircularQueue<T>
         //now use the new array
         currentStartIndex = 0;
         elements = newBackingArray;
-
-        if(newSize < _size)
-        {
-            _size = newSize;
-        }
+        _size = newSize;
+        
     }
 
     public override string ToString()

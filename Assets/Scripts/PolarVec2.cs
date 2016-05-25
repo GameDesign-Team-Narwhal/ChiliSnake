@@ -8,7 +8,12 @@ using UnityEngine;
  * */
 public struct PolarVec2
 {
-	public float A, r;
+    public static PolarVec2 up = new PolarVec2(90, 1);
+    public static PolarVec2 down = new PolarVec2(270, 1);
+    public static PolarVec2 left = new PolarVec2(180, 1);
+    public static PolarVec2 right = new PolarVec2(0, 1);
+
+    public float A, r;
 
 	//angle in radians
 	public float Theta

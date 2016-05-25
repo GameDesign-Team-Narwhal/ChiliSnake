@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a7f2b658fe65de143b00f55d4a3f3e3b
-timeCreated: 1463686443
+timeCreated: 1464207018
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -10,6 +10,7 @@ TextureImporter:
     21300006: Snake Head_3
     21300008: Snake Head_4
     21300010: Snake Head_5
+    21300012: Snake Head_6
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -58,62 +59,72 @@ TextureImporter:
     - name: Snake Head_0
       rect:
         serializedVersion: 2
-        x: 16
+        x: 15
         y: 10
         width: 19
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Snake Head_1
       rect:
         serializedVersion: 2
-        x: 66
+        x: 65
         y: 10
         width: 19
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Snake Head_2
       rect:
         serializedVersion: 2
-        x: 116
+        x: 115
         y: 10
         width: 19
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Snake Head_3
       rect:
         serializedVersion: 2
-        x: 166
+        x: 165
         y: 10
         width: 19
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Snake Head_4
       rect:
         serializedVersion: 2
-        x: 216
+        x: 215
         y: 10
         width: 19
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Snake Head_5
       rect:
         serializedVersion: 2
-        x: 266
+        x: 265
         y: 10
         width: 19
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Snake Head_6
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 10
+        width: 19
+        height: 16
+      alignment: 0
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
