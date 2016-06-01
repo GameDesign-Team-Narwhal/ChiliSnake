@@ -8,7 +8,7 @@ public class SnakeHead : MonoBehaviour {
     public int segmentSize;
 
     //offset in px between segments
-    public uint segmentOffset = 1;
+    public float segmentOffset = 1;
     public uint headExtraOffset = 5;
     //pixels / sec
     public float speed = 30;
@@ -20,7 +20,11 @@ public class SnakeHead : MonoBehaviour {
     public uint bodySegmentsToSpawn;
     public GameObject bodySegmentPrefab;
 
-    public static string KILLS_PLAYER_TAG = "Kills Player";
+    public static string KILLS_PLAYER_TAG = "KillsPlayer";
+
+	public float graceTime = 0.5f;
+
+	public float stTime;
 
     public bool dead = false;
 
@@ -28,7 +32,7 @@ public class SnakeHead : MonoBehaviour {
 
     private List<SnakeBody> bodySegments = new List<SnakeBody>();
 
-    private bool headHasLeftStartingPosition = false;
+    public bool headHasLeftStartingPosition = false;
     private Vector2 hitboxTopRight, hitboxBottomLeft; //local space
 
     private Animator animator;
@@ -38,9 +42,9 @@ public class SnakeHead : MonoBehaviour {
         animator = GetComponent<Animator>();
 
         BoxCollider2D collider = GetComponent<BoxCollider2D>();
-        hitboxTopRight = collider.offset + collider.size / 2;
-        hitboxBottomLeft = collider.offset - collider.size / 2;
-
+        hitboxTopRight = collider.offset /2  + collider.size/2 ;
+        hitboxBottomLeft = collider.offset/2  - collider.size/2 ;
+		stTime = Time.time;
     }
 
     void Start()
@@ -85,23 +89,23 @@ public class SnakeHead : MonoBehaviour {
             body2d.rotation = PolarVec2.FromCartesian(lastPlayerDirectionInput).A;
 
             segmentPositions.Enqueue(new Pair<Vector3, Quaternion>(transform.position, transform.rotation));
-
-            headHasLeftStartingPosition = Physics2D.OverlapArea(
-               transform.InverseTransformPoint(hitboxTopRight),
-               transform.InverseTransformPoint(hitboxBottomLeft)) == null;
+			if(graceTime < Time.time - stTime)
+			{
+            headHasLeftStartingPosition = true;
+			}
         }
 
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.tag.Equals(KILLS_PLAYER_TAG)) //check if e've hit an obsctacle with the head
+        if(other.tag.Equals(KILLS_PLAYER_TAG) && headHasLeftStartingPosition) //check if e've hit an obsctacle with the head
         {
             KillSegmentsFrom(bodySegments[0]);
         }
     }
 
-    void SpawnBodySegment()
+	public void SpawnBodySegment()
     {
         GameObject newSegment = GameObject.Instantiate(bodySegmentPrefab);
         SnakeBody newSegmentScript = newSegment.GetComponent<SnakeBody>();
@@ -116,16 +120,22 @@ public class SnakeHead : MonoBehaviour {
 
         newSegmentScript.indexInQueue = (uint)(((int)segmentPositions.maxSize) - 1 + distanceFromPrevSegment) + extraOffset;
         newSegmentScript.head = this;
+	
 
         //set linked-list references
 
         if (bodySegments.Count > 0)
         {
             SnakeBody prevSegment = bodySegments[bodySegments.Count - 1];
-            prevSegment.segmentAfter = newSegment;
-            newSegmentScript.segmentBefore = prevSegment.gameObject;
+		
+			if(prevSegment != null)
+			{
+				prevSegment.segmentAfter = newSegment;
 
-            newSegmentScript.ignoreCollisionSegments.Add(prevSegment.gameObject);
+            	newSegmentScript.segmentBefore = prevSegment.gameObject;
+
+				newSegmentScript.ignoreCollisionSegments.Add(prevSegment.gameObject);
+			}
         }
         else
         {
@@ -151,7 +161,14 @@ public class SnakeHead : MonoBehaviour {
             
             SnakeBody oldLastSegment = bodySegments[bodySegments.Count - 1];
 
-            lastSegmentOrientation = new Pair<Vector3, Quaternion>(oldLastSegment.transform.position, oldLastSegment.transform.rotation);
+			if(oldLastSegment == null)
+			{
+				lastSegmentOrientation = new Pair<Vector3, Quaternion>(Vector3.zero, Quaternion.identity);
+			}
+			else
+			{
+            	lastSegmentOrientation = new Pair<Vector3, Quaternion>(oldLastSegment.transform.position, oldLastSegment.transform.rotation);
+			}
         }
 
         newSegment.transform.position = lastSegmentOrientation.left;
@@ -182,9 +199,9 @@ public class SnakeHead : MonoBehaviour {
         //        KillSegmentsFrom(lowestIndexSegment);
         //    }
         //}
-        if (otherObject == gameObject)
+        if (otherObject == gameObject && headHasLeftStartingPosition)
         {
-            if(headHasLeftStartingPosition)
+            if(headHasLeftStartingPosition == true)
             {
                 KillSegmentsFrom(bodySegments[0]);
 

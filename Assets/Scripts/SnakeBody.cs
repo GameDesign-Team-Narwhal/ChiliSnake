@@ -13,7 +13,7 @@ public class SnakeBody : MonoBehaviour {
     //segments before and after this one which will not trigger a collision if this segment touches them.
     public GameObject segmentBefore, segmentAfter;
 
-    public Animator animator;
+    private Animator animator;
 
     //list of segments to ignore collisions with
     public HashSet<GameObject> ignoreCollisionSegments = new HashSet<GameObject>();
@@ -51,7 +51,7 @@ public class SnakeBody : MonoBehaviour {
 
         if (!ignoreCollisionSegments.Contains(other.gameObject))
         {
-            //Debug.Log("Snake collision detected.  Other object: " + other.gameObject.ToString());
+            Debug.Log("Snake collision detected.  Other object: " + other.gameObject.ToString());
 
             head.OnCollision(this, other.gameObject);
         }
