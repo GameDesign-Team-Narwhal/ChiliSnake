@@ -4,7 +4,7 @@ using System.Collections;
 [AddComponentMenu("Camera/Pixel Perfect Camera")]
 public class PixelPerfectCamera : MonoBehaviour {
 
-	public static float pixelsToUnits = 1f;
+	public float pixelsToUnits = 1f;
 	public static float scale = 1f;
 
 	public Vector2 nativeResolution = new Vector2 (240, 160);
@@ -12,8 +12,7 @@ public class PixelPerfectCamera : MonoBehaviour {
 	void Awake () {
 		var camera = GetComponent<Camera> ();
 
-        //these may have been set by a previous scene, so we have to reset them
-        pixelsToUnits = 1f;
+        //this may have been set by a previous scene, so we have to reset it
         scale = 1f;
 
 		if (camera.orthographic) {
