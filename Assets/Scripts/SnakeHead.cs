@@ -57,22 +57,31 @@ public class SnakeHead : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if(SystemInfo.deviceType == DeviceType.Handheld)
         {
-            lastPlayerDirectionInput = Vector2.up;
+            //touch
+            if(Input.touches.)
         }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))
+        else //keyboard
         {
-            lastPlayerDirectionInput = -Vector2.up;
+            if (Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                lastPlayerDirectionInput = Vector2.up;
+            }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                lastPlayerDirectionInput = -Vector2.up;
+            }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                lastPlayerDirectionInput = -Vector2.right;
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                lastPlayerDirectionInput = Vector2.right;
+            }
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
-        {
-            lastPlayerDirectionInput = -Vector2.right;
-        }
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
-        {
-            lastPlayerDirectionInput = Vector2.right;
-        }
+
     }
 
     void FixedUpdate ()
@@ -102,6 +111,12 @@ public class SnakeHead : MonoBehaviour {
         if(other.tag.Equals(KILLS_PLAYER_TAG) && headHasLeftStartingPosition) //check if e've hit an obsctacle with the head
         {
             KillSegmentsFrom(bodySegments[0]);
+        }
+        if (other.tag == "Food")
+        {
+            Debug.Log("Spawning");
+            SpawnBodySegment();
+            GameObject.Destroy(other.gameObject);
         }
     }
 
@@ -212,11 +227,6 @@ public class SnakeHead : MonoBehaviour {
         {
             KillSegmentsFrom(segment);
         }
-		if (otherObject.tag == "Food") {
-			Debug.Log("Spawning");
-			SpawnBodySegment();
-			GameObject.Destroy (otherObject);
-		}
 
     }
 
