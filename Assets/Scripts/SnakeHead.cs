@@ -60,7 +60,22 @@ public class SnakeHead : MonoBehaviour {
         if(SystemInfo.deviceType == DeviceType.Handheld)
         {
             //touch
-            if(Input.touches.)
+            if(Input.touches.Length > 0)
+            {
+                Touch touch = Input.touches[0];
+                if(touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved)
+                {
+                    //move the orgin to the center of the screen
+                    PolarVec2 touchCoords = PolarVec2.FromCartesian(touch.position.x - Screen.width / 2, touch.position.y - Screen.height / 2);
+
+                    //round to nearest 90 deg
+                    PolarVec2 movementDirection = new PolarVec2(Mathf.Round(touchCoords.A / 90) * 90, 1);
+
+                    Debug.Log("Touch movement: " + movementDirection);
+
+                    lastPlayerDirectionInput = movementDirection.Cartesian2D;
+                }
+            }
         }
         else //keyboard
         {
