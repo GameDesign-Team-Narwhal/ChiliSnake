@@ -15,8 +15,6 @@ public class Food : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		SnakeHead snakeBody = Player.GetComponent<SnakeHead>();
-		snakeBody.SpawnBodySegment ();
-		GameObject.Destroy (this);
+		GameObject.Destroy (gameObject);
 	}
 }

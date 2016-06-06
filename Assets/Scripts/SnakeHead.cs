@@ -212,6 +212,11 @@ public class SnakeHead : MonoBehaviour {
         {
             KillSegmentsFrom(segment);
         }
+		if (otherObject.tag == "Food") {
+			Debug.Log("Spawning");
+			SpawnBodySegment();
+			GameObject.Destroy (otherObject);
+		}
 
     }
 
