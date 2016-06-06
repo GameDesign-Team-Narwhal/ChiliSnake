@@ -1,9 +1,20 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: eb69ecd69b6c7e241a63f4e32b5ab1a6
+timeCreated: 1465242121
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Dancing_Pepper_0
+    21300002: Dancing_Pepper_1
+    21300004: Dancing_Pepper_2
+=======
 guid: 6617c79c772db50478805ea4a50a95b7
 timeCreated: 1465242058
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
+>>>>>>> origin/master
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,29 +37,79 @@ TextureImporter:
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
+<<<<<<< HEAD
+  textureFormat: -3
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+=======
   textureFormat: -1
   maxTextureSize: 2048
   textureSettings:
     filterMode: -1
     aniso: -1
+>>>>>>> origin/master
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+<<<<<<< HEAD
+  spriteMode: 2
+=======
   spriteMode: 1
+>>>>>>> origin/master
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: .5, y: .5}
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+<<<<<<< HEAD
+  spritePixelsToUnits: 1
+=======
   spritePixelsToUnits: 100
+>>>>>>> origin/master
   alphaIsTransparency: 1
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
+<<<<<<< HEAD
+    sprites:
+    - name: Dancing_Pepper_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 2
+        width: 26
+        height: 37
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dancing_Pepper_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 2
+        width: 22
+        height: 38
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Dancing_Pepper_2
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 0
+        width: 20
+        height: 40
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+=======
     sprites: []
+>>>>>>> origin/master
   spritePackingTag: 
   userData: 
   assetBundleName: 
