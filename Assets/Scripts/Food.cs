@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Food : MonoBehaviour {
@@ -17,6 +17,6 @@ public class Food : MonoBehaviour {
 	{
 		SnakeHead snakeBody = Player.GetComponent<SnakeHead>();
 		snakeBody.SpawnBodySegment ();
-		GameObject.Destroy (this);
+		GameObject.Destroy (gameObject);
 	}
 }
