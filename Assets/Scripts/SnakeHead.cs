@@ -43,7 +43,7 @@ public class SnakeHead : MonoBehaviour {
 
     public bool headHasLeftStartingPosition = false;
     private bool defaultSegmentsInitialized = false;
-    private Vector2 hitboxTopRight, hitboxBottomLeft; //local space
+    //private Vector2 hitboxTopRight, hitboxBottomLeft; //local space
 
     private Animator animator;
 
@@ -52,9 +52,9 @@ public class SnakeHead : MonoBehaviour {
         body2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
-        BoxCollider2D collider = GetComponent<BoxCollider2D>();
-        hitboxTopRight = collider.offset /2  + collider.size/2 ;
-        hitboxBottomLeft = collider.offset/2  - collider.size/2 ;
+        //BoxCollider2D collider = GetComponent<BoxCollider2D>();
+        //hitboxTopRight = collider.offset /2  + collider.size/2 ;
+        //hitboxBottomLeft = collider.offset/2  - collider.size/2 ;
 		stTime = Time.time;
     }
 
@@ -264,17 +264,14 @@ public class SnakeHead : MonoBehaviour {
         //        KillSegmentsFrom(lowestIndexSegment);
         //    }
         //}
-        if(gameObject != null && otherObject == gameObject && headHasLeftStartingPosition)
+        if (gameObject != null && otherObject == gameObject && headHasLeftStartingPosition)
         {
-            if(headHasLeftStartingPosition == true)
+            if (headHasLeftStartingPosition == true)
             {
                 KillSegmentsFrom(_bodySegments[0]);
->>>>>>> origin/master
-
-                //GameObject.Destroy(gameObject);
-       //     }
-        //}
-         if (otherObject.tag == KILLS_PLAYER_TAG)
+            }
+        }
+        if (otherObject.tag == KILLS_PLAYER_TAG)
         {
             KillSegmentsFrom(segment);
         }
