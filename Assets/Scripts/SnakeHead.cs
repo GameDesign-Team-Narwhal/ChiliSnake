@@ -14,6 +14,7 @@ public class SnakeHead : MonoBehaviour {
     public float speed = 30;
 
     public FixedCircularQueue<Pair<Vector3, Quaternion>> segmentPositions = new FixedCircularQueue<Pair<Vector3, Quaternion>>(0);
+    public GameObject upgradeTextPrefab;
 
     public Vector2 lastPlayerDirectionInput;
 
@@ -30,12 +31,22 @@ public class SnakeHead : MonoBehaviour {
 
     private Rigidbody2D body2d;
 
-    private List<SnakeBody> bodySegments = new List<SnakeBody>();
+    private List<SnakeBody> _bodySegments = new List<SnakeBody>();
+
+    public List<SnakeBody> bodySegments
+    {
+        get
+        {
+            return _bodySegments;
+        }
+    }
 
     public bool headHasLeftStartingPosition = false;
+    private bool defaultSegmentsInitialized = false;
     private Vector2 hitboxTopRight, hitboxBottomLeft; //local space
 
     private Animator animator;
+
 
 	void Awake () {
         body2d = GetComponent<Rigidbody2D>();
@@ -53,6 +64,9 @@ public class SnakeHead : MonoBehaviour {
         {
             SpawnBodySegment();
         }
+
+        //cause the new segment text to be shown
+        defaultSegmentsInitialized = true;
     }
 
     void Update()
@@ -68,12 +82,22 @@ public class SnakeHead : MonoBehaviour {
                     //move the orgin to the center of the screen
                     PolarVec2 touchCoords = PolarVec2.FromCartesian(touch.position.x - Screen.width / 2, touch.position.y - Screen.height / 2);
 
-                    //round to nearest 90 deg
-                    PolarVec2 movementDirection = new PolarVec2(Mathf.Round(touchCoords.A / 90) * 90, 1);
-
-                    Debug.Log("Touch movement: " + movementDirection);
-
-                    lastPlayerDirectionInput = movementDirection.Cartesian2D;
+                    if (touchCoords.A >= 45 && touchCoords.A < 135)
+                    {
+                        lastPlayerDirectionInput = Vector2.up;
+                    }
+                    else if (touchCoords.A >= 135 && touchCoords.A < 225)
+                    {
+                        lastPlayerDirectionInput = -Vector2.right;
+                    }
+                    else if (touchCoords.A >= 225 && touchCoords.A < 315)
+                    {
+                        lastPlayerDirectionInput = -Vector2.up;
+                    }
+                    else // touchCoords.A >= 315 || touchCoords.A < 45
+                    {
+                        lastPlayerDirectionInput = Vector2.right;
+                    }
                 }
             }
         }
@@ -125,7 +149,7 @@ public class SnakeHead : MonoBehaviour {
     {
         if(other.tag.Equals(KILLS_PLAYER_TAG) && headHasLeftStartingPosition) //check if e've hit an obsctacle with the head
         {
-            KillSegmentsFrom(bodySegments[0]);
+            KillSegmentsFrom(_bodySegments[0]);
         }
         if (other.tag == "Food")
         {
@@ -143,7 +167,7 @@ public class SnakeHead : MonoBehaviour {
         // the 30 comes from FixedUpdate being called 30 times per second
         uint distanceFromPrevSegment /* in updates */ = (uint)Mathf.RoundToInt((segmentSize + segmentOffset) * 30f / speed);
 
-        //Debug.Log("distanceFromPrevSegment: " + distanceFromPrevSegment);
+        Debug.Log("distanceFromPrevSegment: " + distanceFromPrevSegment);
 
         //add extra offset becuase the head is bigger than the body segments
         uint extraOffset = segmentPositions.maxSize == 0 ? headExtraOffset : 0;
@@ -154,9 +178,9 @@ public class SnakeHead : MonoBehaviour {
 
         //set linked-list references
 
-        if (bodySegments.Count > 0)
+        if (_bodySegments.Count > 0)
         {
-            SnakeBody prevSegment = bodySegments[bodySegments.Count - 1];
+            SnakeBody prevSegment = _bodySegments[_bodySegments.Count - 1];
 		
 			if(prevSegment != null)
 			{
@@ -172,7 +196,7 @@ public class SnakeHead : MonoBehaviour {
             newSegmentScript.segmentBefore = gameObject;
         }
 
-        if(bodySegments.Count <= 1) //the second segment can hit the head when turning, so add it to the ignore list.
+        if(_bodySegments.Count <= 1) //the second segment can hit the head when turning, so add it to the ignore list.
         {
             newSegmentScript.ignoreCollisionSegments.Add(gameObject);
         }
@@ -182,14 +206,14 @@ public class SnakeHead : MonoBehaviour {
 
         Pair<Vector3, Quaternion> lastSegmentOrientation;
 
-        if(bodySegments.Count < 1) //first segment
+        if(_bodySegments.Count < 1) //first segment
         {
             lastSegmentOrientation = new Pair<Vector3, Quaternion>(transform.position, transform.rotation);
         }
         else
         {
             
-            SnakeBody oldLastSegment = bodySegments[bodySegments.Count - 1];
+            SnakeBody oldLastSegment = _bodySegments[_bodySegments.Count - 1];
 
 			if(oldLastSegment == null)
 			{
@@ -209,7 +233,18 @@ public class SnakeHead : MonoBehaviour {
             segmentPositions[oldPosQueueSize + counter] = lastSegmentOrientation;
         }
 
-        bodySegments.Add(newSegmentScript); 
+        _bodySegments.Add(newSegmentScript);
+
+        GameManager.instance.OnAddSegment();
+
+        if(defaultSegmentsInitialized)
+        {
+            Vector3 messagePosition = newSegment.transform.position;
+            messagePosition.z = -1;
+
+            GameObject newSegmentMessage = (GameObject)Instantiate(upgradeTextPrefab, messagePosition, Quaternion.identity);
+            newSegmentMessage.GetComponent<UpgradeText>().text = string.Format("Pepper {0}", _bodySegments.Count);
+        }
     }
 
     public void OnCollision(SnakeBody segment, GameObject otherObject)
@@ -229,11 +264,19 @@ public class SnakeHead : MonoBehaviour {
         //        KillSegmentsFrom(lowestIndexSegment);
         //    }
         //}
+<<<<<<< HEAD
        // if (otherObject == gameObject && headHasLeftStartingPosition)
        // {
        //     if(headHasLeftStartingPosition == true)
        //     {
        //         KillSegmentsFrom(bodySegments[0]);
+=======
+        if (otherObject == gameObject && headHasLeftStartingPosition)
+        {
+            if(headHasLeftStartingPosition == true)
+            {
+                KillSegmentsFrom(_bodySegments[0]);
+>>>>>>> origin/master
 
                 //GameObject.Destroy(gameObject);
        //     }
@@ -253,14 +296,11 @@ public class SnakeHead : MonoBehaviour {
         if (newLastSegment == null)
         {
             //segment next to the head
-
-            //TODO: kill player
             dead = true;
             animator.SetTrigger("Die");
-
-            Debug.LogError("Player died");
             firstDeadSegment.DieRecursive(0);
 
+            GameManager.instance.OnPlayerDeath();
         }
         else
         {
@@ -269,9 +309,9 @@ public class SnakeHead : MonoBehaviour {
             firstDeadSegment.DieRecursive(0);
             newLastSegment.segmentAfter = null;
 
-            int firstDeadSegmentIndex = bodySegments.IndexOf(firstDeadSegment);
+            int firstDeadSegmentIndex = _bodySegments.IndexOf(firstDeadSegment);
 
-            bodySegments.RemoveRange(firstDeadSegmentIndex, bodySegments.Count - firstDeadSegmentIndex);
+            _bodySegments.RemoveRange(firstDeadSegmentIndex, _bodySegments.Count - firstDeadSegmentIndex);
         }
 
 

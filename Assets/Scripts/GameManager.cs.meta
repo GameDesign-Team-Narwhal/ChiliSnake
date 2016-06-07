@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 27b9450d33780d84bbc488db9f87abb3
+timeCreated: 1465278457
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - restartLevelText: {instanceID: 0}
+  - instructionsText: {instanceID: 0}
+  - controlsOverlay: {instanceID: 0}
+  - snakeHeadPrefab: {fileID: 132386, guid: f1418100b14c4b64295761146776a11d, type: 2}
+  - snakeHeadInstance: {instanceID: 0}
+  executionOrder: 0
+  icon: {fileID: 7250588514170254948, guid: 0000000000000000d000000000000000, type: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
