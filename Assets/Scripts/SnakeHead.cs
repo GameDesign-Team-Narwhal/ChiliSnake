@@ -269,11 +269,12 @@ public class SnakeHead : MonoBehaviour {
             if(headHasLeftStartingPosition == true)
             {
                 KillSegmentsFrom(_bodySegments[0]);
+>>>>>>> origin/master
 
                 //GameObject.Destroy(gameObject);
-            }
-        }
-        else if (otherObject.tag == KILLS_PLAYER_TAG)
+       //     }
+        //}
+         if (otherObject.tag == KILLS_PLAYER_TAG)
         {
             KillSegmentsFrom(segment);
         }
