@@ -18,7 +18,8 @@ public class GameManager : MonoBehaviour
     public uint snakeSpeed = 4;
     public uint snakeStartingSegments = 5;
     public uint snakeSegmentOffset = 1;
-
+	public GameObject FoodPrefab;
+	public Vector2[] Food;
     private bool gameStarted = false;
 
     private float gameStartTime;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour
 
         //when the level is loaded, show the controls hint
         controlsOverlay.GetComponent<Animator>().SetTrigger("Flash");
+
     }
 
 	// Update is called once per frame
@@ -123,6 +125,10 @@ public class GameManager : MonoBehaviour
 
         instructionsText.GetComponent<Text>().text = string.Format("Become {0} Segments Long!", numSegmentsNeeded);
         instructionsText.SetActive(true);
-        
+		foreach (Vector2 i in Food) {
+			GameObject instance = null;
+			instance = GameObject.Instantiate (FoodPrefab);
+			instance.transform.position = i;
+		}
     }
 }
