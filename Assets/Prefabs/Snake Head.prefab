@@ -92,6 +92,7 @@ MonoBehaviour:
   segmentOffset: .200000003
   headExtraOffset: 5
   speed: 4
+  upgradeTextPrefab: {fileID: 136932, guid: c25655f0ede00094599237b2841824de, type: 2}
   lastPlayerDirectionInput: {x: 0, y: 0}
   bodySegmentsToSpawn: 6
   bodySegmentPrefab: {fileID: 162908, guid: 752df395c444afa4baff616a2c51b693, type: 2}

@@ -55,7 +55,7 @@ public class FixedCircularQueue<T>
     {
         if (elements.Length == 0)
         {
-            return;
+            throw new ArgumentException("Tried to add element to 0 length queue!");
         }
 
         elements[currentStartIndex] = element;
@@ -77,7 +77,7 @@ public class FixedCircularQueue<T>
     }
 
     //calculate the index in the internal array of the element which appears to be at apparentIndex
-    //does validation
+    //does validation, and throws an exeption if index is invalid
     private uint CalculateInternalIndex(uint apparentIndex)
     {
         if (apparentIndex >= _size)
