@@ -229,16 +229,16 @@ public class SnakeHead : MonoBehaviour {
         //        KillSegmentsFrom(lowestIndexSegment);
         //    }
         //}
-        if (otherObject == gameObject && headHasLeftStartingPosition)
-        {
-            if(headHasLeftStartingPosition == true)
-            {
-                KillSegmentsFrom(bodySegments[0]);
+       // if (otherObject == gameObject && headHasLeftStartingPosition)
+       // {
+       //     if(headHasLeftStartingPosition == true)
+       //     {
+       //         KillSegmentsFrom(bodySegments[0]);
 
                 //GameObject.Destroy(gameObject);
-            }
-        }
-        else if (otherObject.tag == KILLS_PLAYER_TAG)
+       //     }
+        //}
+         if (otherObject.tag == KILLS_PLAYER_TAG)
         {
             KillSegmentsFrom(segment);
         }

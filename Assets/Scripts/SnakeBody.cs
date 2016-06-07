@@ -52,7 +52,7 @@ public class SnakeBody : MonoBehaviour {
         if (!ignoreCollisionSegments.Contains(other.gameObject))
         {
             Debug.Log("Snake collision detected.  Other object: " + other.gameObject.ToString());
-
+			Debug.LogError("body collition");
             head.OnCollision(this, other.gameObject);
         }
     }
