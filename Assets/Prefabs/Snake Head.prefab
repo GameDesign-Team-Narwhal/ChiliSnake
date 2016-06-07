@@ -96,7 +96,7 @@ MonoBehaviour:
   lastPlayerDirectionInput: {x: 0, y: 0}
   bodySegmentsToSpawn: 6
   bodySegmentPrefab: {fileID: 162908, guid: 752df395c444afa4baff616a2c51b693, type: 2}
-  graceTime: .00999999978
+  graceTime: .100000001
   stTime: 0
   dead: 0
   headHasLeftStartingPosition: 0

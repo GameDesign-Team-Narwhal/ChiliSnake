@@ -125,7 +125,10 @@ public class GameManager : MonoBehaviour
 
         instructionsText.GetComponent<Text>().text = string.Format("Become {0} Segments Long!", numSegmentsNeeded);
         instructionsText.SetActive(true);
-		foreach (Vector2 i in Food) {
+		foreach (GameObject Cleanables in GameObject.FindGameObjectsWithTag("Food")) {
+			GameObject.Destroy(Cleanables);
+		}
+		foreach(Vector2 i in Food) {
 			GameObject instance = null;
 			instance = GameObject.Instantiate (FoodPrefab);
 			instance.transform.position = i;
