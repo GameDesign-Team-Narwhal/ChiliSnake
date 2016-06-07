@@ -53,7 +53,10 @@ public class SnakeBody : MonoBehaviour {
         {
             Debug.Log("Snake collision detected. This segment: #" + head.bodySegments.IndexOf(this) + " Other object: " + other.gameObject.ToString());
 
-            head.OnCollision(this, other.gameObject);
+            if(head != null)
+            {
+                head.OnCollision(this, other.gameObject);
+            }
         }
     }
 

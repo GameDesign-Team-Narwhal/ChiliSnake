@@ -264,7 +264,7 @@ public class SnakeHead : MonoBehaviour {
         //        KillSegmentsFrom(lowestIndexSegment);
         //    }
         //}
-        if (otherObject == gameObject && headHasLeftStartingPosition)
+        if(gameObject != null && otherObject == gameObject && headHasLeftStartingPosition)
         {
             if(headHasLeftStartingPosition == true)
             {
