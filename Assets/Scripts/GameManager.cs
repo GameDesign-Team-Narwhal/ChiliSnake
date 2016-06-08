@@ -12,12 +12,15 @@ public class GameManager : MonoBehaviour
     public GameObject controlsOverlay;
     public GameObject snakeHeadPrefab;
 
+    public GameObject pauseMenu;
+
     public Vector2 playerStartCoordinates;
     public uint numSegmentsNeeded = 10;
     public int nextLevelIndex = 1;
     public uint snakeSpeed = 4;
     public uint snakeStartingSegments = 5;
     public uint snakeSegmentOffset = 1;
+    public bool showControlsOverlay = false;
 	public GameObject FoodPrefab;
 	public Vector2[] Food;
     private bool gameStarted = false;
@@ -35,7 +38,10 @@ public class GameManager : MonoBehaviour
         StartGame();
 
         //when the level is loaded, show the controls hint
-        controlsOverlay.GetComponent<Animator>().SetTrigger("Flash");
+        if(showControlsOverlay)
+        {
+            controlsOverlay.GetComponent<Animator>().SetTrigger("Flash");
+        }
 
     }
 
@@ -73,6 +79,7 @@ public class GameManager : MonoBehaviour
     {
         gameStarted = false;
 
+        instructionsText.SetActive(false);
         restartLevelText.SetActive(true);
     }
 
@@ -93,7 +100,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadNextLevelAfterAnim()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(.5f);
 
         Application.LoadLevel(nextLevelIndex);
 
@@ -133,5 +140,17 @@ public class GameManager : MonoBehaviour
 			instance = GameObject.Instantiate (FoodPrefab);
 			instance.transform.position = i;
 		}
+    }
+
+    public void OnPause()
+    {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+    }
+
+    public void OnResume()
+    {
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
     }
 }

@@ -25,7 +25,7 @@ public struct PolarVec2
 
 		set
 		{
-			A = Mathf.Rad2Deg * value;
+			A = NormalizeAngle(Mathf.Rad2Deg * value);
 		}
 	}
 
@@ -60,7 +60,7 @@ public struct PolarVec2
 
 	public PolarVec2 (float A, float r)
 	{
-		this.A = A;
+		this.A = NormalizeAngle(A);
 		this.r = r;
 	}
 
@@ -95,7 +95,7 @@ public struct PolarVec2
         //law of cosines
 		result.r = Mathf.Sqrt(Mathf.Pow(a.r, 2) + Mathf.Pow(b.r, 2) - 2 * a.r * b.r * Mathf.Cos(angleDRad));
 
-		result.A = a.A - Mathf.Asin(b.r * Mathf.Sin(angleDRad) / result.r) * Mathf.Rad2Deg;        
+		result.A = NormalizeAngle(a.A - Mathf.Asin(b.r * Mathf.Sin(angleDRad) / result.r) * Mathf.Rad2Deg);        
 		
 		//Debug.Log("A: " + result.A + " EA: " + (a.A + b.A) + "a.r: " + a.r + " b.r: " + b.r + " r: " + result.r);
 
@@ -112,7 +112,7 @@ public struct PolarVec2
         PolarVec2 result = new PolarVec2();
 
         //law of sines
-        result.A = 90 - Mathf.Rad2Deg * Mathf.Asin((a.r / b.r) * Mathf.Sin(a.Theta - b.Theta)) + b.A;
+        result.A = NormalizeAngle(90 - Mathf.Rad2Deg * Mathf.Asin((a.r / b.r) * Mathf.Sin(a.Theta - b.Theta)) + b.A);
 
         //law of cosines
 		result.r = Mathf.Sqrt(Mathf.Pow(a.r, 2) + Mathf.Pow(b.r, 2) - 2 * a.r * b.r * Mathf.Cos(a.Theta - b.Theta)) * Math.Sign(a.A - b.A);
@@ -154,6 +154,19 @@ public struct PolarVec2
             default:
                 return new Vector3(0, 0, A);
         } 
+    }
+
+    //Makes an angle between 0 and 360
+    public static float NormalizeAngle(float angle)
+    {
+        angle = angle % 360f;
+
+        if (angle < 0)
+        {
+            angle += 360;
+        }
+
+        return angle;
     }
 }
 
