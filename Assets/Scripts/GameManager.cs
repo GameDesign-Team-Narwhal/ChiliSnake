@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator LoadNextLevelAfterAnim()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(.5f);
 
         Application.LoadLevel(nextLevelIndex);
 

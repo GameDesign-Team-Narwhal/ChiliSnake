@@ -104,11 +104,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 430062, guid: 8f430a4426aa8f94bbab5bddeb6050dd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 7.03999996
+      value: 6.71000004
       objectReference: {fileID: 0}
     - target: {fileID: 430062, guid: 8f430a4426aa8f94bbab5bddeb6050dd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.8900001
+      value: -2.66000009
       objectReference: {fileID: 0}
     - target: {fileID: 430062, guid: 8f430a4426aa8f94bbab5bddeb6050dd, type: 2}
       propertyPath: m_LocalPosition.z
@@ -368,6 +368,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
+      propertyPath: Food.Array.size
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 412778, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
       propertyPath: m_LocalPosition.x
       value: 542.763245
@@ -419,6 +423,30 @@ Prefab:
     - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
       propertyPath: nextLevelIndex
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
+      propertyPath: Food.Array.data[0].x
+      value: -11.6000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
+      propertyPath: Food.Array.data[0].y
+      value: 2.30999994
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
+      propertyPath: Food.Array.data[1].x
+      value: -.449999988
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
+      propertyPath: Food.Array.data[1].y
+      value: 3.03999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
+      propertyPath: Food.Array.data[2].x
+      value: 6.71000004
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
+      propertyPath: Food.Array.data[2].y
+      value: -2.66000009
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
@@ -557,6 +585,10 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11406156, guid: 9c285ca8d2c14a04da58f500b4ffb462, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 22459946, guid: 9c285ca8d2c14a04da58f500b4ffb462, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -637,6 +669,34 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 601720224}
+    - target: {fileID: 11459168, guid: 9c285ca8d2c14a04da58f500b4ffb462, type: 2}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11459168, guid: 9c285ca8d2c14a04da58f500b4ffb462, type: 2}
+      propertyPath: m_ScreenMatchMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11406156, guid: 9c285ca8d2c14a04da58f500b4ffb462, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11406156, guid: 9c285ca8d2c14a04da58f500b4ffb462, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11406156, guid: 9c285ca8d2c14a04da58f500b4ffb462, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 601720224}
+    - target: {fileID: 11406156, guid: 9c285ca8d2c14a04da58f500b4ffb462, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnResume
+      objectReference: {fileID: 0}
+    - target: {fileID: 11406156, guid: 9c285ca8d2c14a04da58f500b4ffb462, type: 2}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c285ca8d2c14a04da58f500b4ffb462, type: 2}
   m_IsPrefabParent: 0
@@ -757,11 +817,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 430062, guid: 8f430a4426aa8f94bbab5bddeb6050dd, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -.0500000007
+      value: -.449999988
       objectReference: {fileID: 0}
     - target: {fileID: 430062, guid: 8f430a4426aa8f94bbab5bddeb6050dd, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2.8900001
+      value: 3.03999996
       objectReference: {fileID: 0}
     - target: {fileID: 430062, guid: 8f430a4426aa8f94bbab5bddeb6050dd, type: 2}
       propertyPath: m_LocalPosition.z

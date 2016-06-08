@@ -244,8 +244,8 @@ public class SnakeHead : MonoBehaviour {
             Vector3 messagePosition = newSegment.transform.position;
             messagePosition.z = -1;
 
-           // GameObject newSegmentMessage = (GameObject)Instantiate(upgradeTextPrefab, messagePosition, Quaternion.identity);
-          //  newSegmentMessage.GetComponent<UpgradeText>().text = string.Format("Pepper {0}", _bodySegments.Count);
+            GameObject newSegmentMessage = (GameObject)Instantiate(upgradeTextPrefab, messagePosition, Quaternion.identity);
+            newSegmentMessage.GetComponent<UpgradeText>().text = string.Format("Pepper {0}", _bodySegments.Count);
         }
     }
 
