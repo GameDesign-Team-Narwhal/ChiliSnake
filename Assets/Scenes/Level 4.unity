@@ -1379,6 +1379,7 @@ Prefab:
       propertyPath: FoodPrefab
       value: 
       objectReference: {fileID: 166162, guid: f740b0acb1206954b98d31397180dce0, type: 2}
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 830023651}
