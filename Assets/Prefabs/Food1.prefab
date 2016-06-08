@@ -1,53 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &112162
+--- !u!1 &176868
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 430062}
-  - 212: {fileID: 21210860}
-  - 61: {fileID: 6152696}
+  - 4: {fileID: 433832}
+  - 212: {fileID: 21260924}
   m_Layer: 0
-  m_Name: Food
-  m_TagString: Food
+  m_Name: Food1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &430062
+--- !u!4 &433832
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112162}
+  m_GameObject: {fileID: 176868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.7618704, y: -2.9714551, z: 0}
+  m_LocalPosition: {x: 16.1373978, y: -10.4717884, z: 0}
   m_LocalScale: {x: .0500000007, y: .0500000007, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!61 &6152696
-BoxCollider2D:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112162}
-  m_Enabled: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Size: {x: 10, y: 10}
---- !u!212 &21210860
+--- !u!212 &21260924
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 112162}
+  m_GameObject: {fileID: 176868}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -66,7 +52,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b8063e8ed5eee2842a6f5d2031e92b12, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58aa3eb4cb0808f4cbfc1885f7e56057, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -77,5 +63,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 112162}
+  m_RootGameObject: {fileID: 176868}
   m_IsPrefabParent: 1

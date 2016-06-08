@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     public uint snakeStartingSegments = 5;
     public uint snakeSegmentOffset = 1;
     public bool showControlsOverlay = false;
+	public GameObject FoodPrefab;
+	public Vector2[] Food;
     private bool gameStarted = false;
 
     private float gameStartTime;
@@ -40,6 +42,7 @@ public class GameManager : MonoBehaviour
         {
             controlsOverlay.GetComponent<Animator>().SetTrigger("Flash");
         }
+
     }
 
 	// Update is called once per frame
@@ -129,7 +132,14 @@ public class GameManager : MonoBehaviour
 
         instructionsText.GetComponent<Text>().text = string.Format("Become {0} Segments Long!", numSegmentsNeeded);
         instructionsText.SetActive(true);
-        
+		foreach (GameObject Cleanables in GameObject.FindGameObjectsWithTag("Food")) {
+			GameObject.Destroy(Cleanables);
+		}
+		foreach(Vector2 i in Food) {
+			GameObject instance = null;
+			instance = GameObject.Instantiate (FoodPrefab);
+			instance.transform.position = i;
+		}
     }
 
     public void OnPause()

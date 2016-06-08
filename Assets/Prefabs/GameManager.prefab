@@ -50,6 +50,10 @@ MonoBehaviour:
   snakeSpeed: 4
   snakeStartingSegments: 6
   snakeSegmentOffset: 0
+  FoodPrefab: {fileID: 112162, guid: 8f430a4426aa8f94bbab5bddeb6050dd, type: 2}
+  Food:
+  - {x: 5, y: -4}
+  - {x: -5, y: 4}
   snakeHeadInstance: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
