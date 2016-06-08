@@ -12,13 +12,15 @@ public class GameManager : MonoBehaviour
     public GameObject controlsOverlay;
     public GameObject snakeHeadPrefab;
 
+    public GameObject pauseMenu;
+
     public Vector2 playerStartCoordinates;
     public uint numSegmentsNeeded = 10;
     public int nextLevelIndex = 1;
     public uint snakeSpeed = 4;
     public uint snakeStartingSegments = 5;
     public uint snakeSegmentOffset = 1;
-
+    public bool showControlsOverlay = false;
     private bool gameStarted = false;
 
     private float gameStartTime;
@@ -34,7 +36,10 @@ public class GameManager : MonoBehaviour
         StartGame();
 
         //when the level is loaded, show the controls hint
-        controlsOverlay.GetComponent<Animator>().SetTrigger("Flash");
+        if(showControlsOverlay)
+        {
+            controlsOverlay.GetComponent<Animator>().SetTrigger("Flash");
+        }
     }
 
 	// Update is called once per frame
@@ -71,6 +76,7 @@ public class GameManager : MonoBehaviour
     {
         gameStarted = false;
 
+        instructionsText.SetActive(false);
         restartLevelText.SetActive(true);
     }
 
@@ -124,5 +130,17 @@ public class GameManager : MonoBehaviour
         instructionsText.GetComponent<Text>().text = string.Format("Become {0} Segments Long!", numSegmentsNeeded);
         instructionsText.SetActive(true);
         
+    }
+
+    public void OnPause()
+    {
+        Time.timeScale = 0;
+        pauseMenu.SetActive(true);
+    }
+
+    public void OnResume()
+    {
+        Time.timeScale = 1;
+        pauseMenu.SetActive(false);
     }
 }

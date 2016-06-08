@@ -82,6 +82,8 @@ public class SnakeHead : MonoBehaviour {
                     //move the orgin to the center of the screen
                     PolarVec2 touchCoords = PolarVec2.FromCartesian(touch.position.x - Screen.width / 2, touch.position.y - Screen.height / 2);
 
+                    Debug.Log("Touch Coords: " + touchCoords.ToString());
+
                     if (touchCoords.A >= 45 && touchCoords.A < 135)
                     {
                         lastPlayerDirectionInput = Vector2.up;
@@ -167,7 +169,7 @@ public class SnakeHead : MonoBehaviour {
         // the 30 comes from FixedUpdate being called 30 times per second
         uint distanceFromPrevSegment /* in updates */ = (uint)Mathf.RoundToInt((segmentSize + segmentOffset) * 30f / speed);
 
-        Debug.Log("distanceFromPrevSegment: " + distanceFromPrevSegment);
+        //Debug.Log("distanceFromPrevSegment: " + distanceFromPrevSegment);
 
         //add extra offset becuase the head is bigger than the body segments
         uint extraOffset = segmentPositions.maxSize == 0 ? headExtraOffset : 0;

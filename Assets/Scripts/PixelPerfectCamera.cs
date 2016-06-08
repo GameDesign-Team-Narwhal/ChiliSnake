@@ -4,6 +4,8 @@ using System.Collections;
 [AddComponentMenu("Camera/Pixel Perfect Camera")]
 public class PixelPerfectCamera : MonoBehaviour {
 
+    public static float scenePixelsToUnits;
+
 	public float pixelsToUnits = 1f;
 	public static float scale = 1f;
 
@@ -17,11 +19,11 @@ public class PixelPerfectCamera : MonoBehaviour {
 
 		if (camera.orthographic) {
 			scale = Screen.height/nativeHeight;
-			pixelsToUnits *= scale;
-			camera.orthographicSize = (Screen.height / 2.0f) / pixelsToUnits;
-
-            Debug.Log("pixelsToUnits = " + pixelsToUnits + " scale = " + scale);
+			
+			camera.orthographicSize = (Screen.height / 2.0f) / (pixelsToUnits * scale); ;
 		}
+
+        scenePixelsToUnits = pixelsToUnits;
 	}
 
 }
