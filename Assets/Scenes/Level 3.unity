@@ -1283,7 +1283,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 1875877993}
   playerStartCoordinates: {x: -13.8145399, y: 3.11666799}
   numSegmentsNeeded: 9
-  nextLevelIndex: 3
+  nextLevelIndex: 4
   snakeSpeed: 4
   snakeStartingSegments: 6
   snakeSegmentOffset: 0
