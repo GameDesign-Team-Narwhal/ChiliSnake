@@ -368,11 +368,11 @@ Prefab:
       objectReference: {fileID: 221194937}
     - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
       propertyPath: snakeStartingSegments
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
       propertyPath: numSegmentsNeeded
-      value: 9
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
       propertyPath: playerStartCoordinates.x
@@ -389,7 +389,7 @@ Prefab:
     - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
       propertyPath: FoodPrefab
       value: 
-      objectReference: {fileID: 112162, guid: 8f430a4426aa8f94bbab5bddeb6050dd, type: 2}
+      objectReference: {fileID: 173870, guid: 775c705bd6ccbd4478be4786f14846a4, type: 2}
     - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
       propertyPath: Food.Array.data[0].x
       value: -11.6205902
@@ -413,6 +413,10 @@ Prefab:
     - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
       propertyPath: Food.Array.data[2].y
       value: -2.10607791
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
+      propertyPath: snakeSegmentOffset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
@@ -839,7 +843,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
 --- !u!114 &1467983863
 MonoBehaviour:
   m_ObjectHideFlags: 0

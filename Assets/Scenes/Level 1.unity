@@ -537,6 +537,14 @@ Prefab:
       propertyPath: controlsOverlay
       value: 
       objectReference: {fileID: 426881667}
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
+      propertyPath: snakeSegmentOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
+      propertyPath: FoodPrefab
+      value: 
+      objectReference: {fileID: 185302, guid: cc5e39939198c9a4bb191dfa14b99ff2, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
   m_IsPrefabParent: 0

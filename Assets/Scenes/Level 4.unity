@@ -1233,6 +1233,14 @@ Prefab:
       propertyPath: Food.Array.data[5].y
       value: -4.98226023
       objectReference: {fileID: 0}
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
+      propertyPath: snakeSegmentOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429612, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
+      propertyPath: FoodPrefab
+      value: 
+      objectReference: {fileID: 166162, guid: f740b0acb1206954b98d31397180dce0, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6dee1d5438ba4044adad0d6ca1bf0c7, type: 2}
   m_IsPrefabParent: 0
@@ -2246,7 +2254,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 46
+  m_RootOrder: 44
 --- !u!114 &1467983863
 MonoBehaviour:
   m_ObjectHideFlags: 0
