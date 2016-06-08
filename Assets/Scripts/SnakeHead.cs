@@ -71,6 +71,8 @@ public class SnakeHead : MonoBehaviour {
 
     void Update()
     {
+        Vector2 oldDirInput = lastPlayerDirectionInput;
+
         if(SystemInfo.deviceType == DeviceType.Handheld)
         {
             //touch
@@ -121,6 +123,12 @@ public class SnakeHead : MonoBehaviour {
             {
                 lastPlayerDirectionInput = Vector2.right;
             }
+        }
+
+        //not allowed to turn around
+        if(lastPlayerDirectionInput.Equals(-oldDirInput))
+        {
+            lastPlayerDirectionInput = oldDirInput;
         }
 
     }
